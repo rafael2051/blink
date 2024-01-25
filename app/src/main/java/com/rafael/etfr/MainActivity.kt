@@ -31,6 +31,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
@@ -69,12 +70,12 @@ fun PdfSelector(modifier: Modifier = Modifier){
     Column(
         modifier = Modifier.fillMaxSize()
     ){
-        Spacer(modifier = Modifier.fillMaxSize(0.3f))
         Column() {
             Row {
                 Column(
-                    modifier = Modifier.fillMaxWidth(0.25f).
-                    fillMaxHeight(0.25f)
+                    modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .fillMaxHeight(0.25f)
                 ) {
                     Button(onClick = { /*TODO*/ },
                         colors = ButtonDefaults.buttonColors(
@@ -85,18 +86,13 @@ fun PdfSelector(modifier: Modifier = Modifier){
                         modifier = Modifier.fillMaxWidth()) {
                         Icon(imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Seta para trás",
-                            modifier = Modifier.fillMaxSize(0.7f))
+                            modifier = Modifier.fillMaxSize(1f))
                     }
                 }
                 Column(
-                    modifier = Modifier.fillMaxSize(0.67f)
-                ) {
-                    Pdfs(0.5f)
-                    Pdfs(1f)
-                }
-                Column(
-                    modifier = Modifier.fillMaxWidth(1f).
-                    fillMaxHeight(0.25f)
+                    modifier = Modifier
+                        .fillMaxWidth(1f)
+                        .fillMaxHeight(0.25f)
                 ) {
                     Button(onClick = { /*TODO*/ },
                         colors = ButtonDefaults.buttonColors(
@@ -107,8 +103,31 @@ fun PdfSelector(modifier: Modifier = Modifier){
                         modifier = Modifier.fillMaxWidth()) {
                         Icon(imageVector = Icons.Default.ArrowForward,
                             contentDescription = "Seta para trás",
-                            modifier = Modifier.fillMaxSize(0.7f))
+                            modifier = Modifier.fillMaxSize(1f))
                     }
+                }
+            }
+            Row{
+                Column(
+                    modifier = Modifier.fillMaxHeight(0.75f)
+                ) {
+                    Pdfs(0.5f)
+                    Pdfs(1f)
+                }
+            }
+            Column(
+                modifier = Modifier.fillMaxHeight()
+            ){
+                Button(onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Transparent,
+                        contentColor = Color.Black
+                    ),
+                    shape = RectangleShape,
+                    modifier = Modifier.fillMaxSize()) {
+                    Icon(imageVector = Icons.Default.Home,
+                        contentDescription = "Icone de uma casa pra voltar pra pagina inicial",
+                        modifier = Modifier.fillMaxSize())
                 }
             }
         }
@@ -120,7 +139,9 @@ fun PdfImage(){
     val pdf = painterResource(R.drawable.pdf_icon)
     Image(
         painter = pdf,
-        contentDescription = "Imagem mostra ícone de pdf")
+        contentDescription = "Imagem mostra ícone de pdf",
+        modifier = Modifier.fillMaxWidth().
+                    fillMaxHeight(0.75f))
 }
 
 @Composable
@@ -145,8 +166,9 @@ fun Pdfs(spaceOccupied: Float){
                     contentColor = Color.Black
                 ),
                 shape = RectangleShape,
-                modifier = Modifier.fillParentMaxWidth(0.5f).
-                fillParentMaxHeight(spaceOccupied)) {
+                modifier = Modifier
+                    .fillParentMaxWidth(0.5f)
+                    .fillParentMaxHeight(spaceOccupied)) {
                 Column {
                     PdfImage()
                     PdfTitle(titulo)
