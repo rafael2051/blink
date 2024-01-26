@@ -1,4 +1,4 @@
-# PISK
+# Blink
 Aplicação android feita em kotlin ainda em estágio de produção, cujo objetivo é usar rastreamento de olhar para permitir que pessoas com ELA possam ler livros pelo tablet. 
 
 ## Interfaces
